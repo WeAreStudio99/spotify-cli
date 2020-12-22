@@ -3,7 +3,7 @@ import express from 'express';
 import open from 'open';
 import querystring from 'querystring';
 import { Observable } from 'rxjs';
-import { bearer, keychain } from '.';
+import { keychain } from '.';
 import { environment } from '../environments/environment';
 
 const RESPONSE_TYPE = 'code';
