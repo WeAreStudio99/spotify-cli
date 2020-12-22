@@ -1,6 +1,5 @@
 # compiled output
 /lib
-
 # dependencies
 /node_modules
 
@@ -29,4 +28,4 @@ Thumbs.db
 /src/environments/*
 
 # User files
-.config/*
+/.config/*
