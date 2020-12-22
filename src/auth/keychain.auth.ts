@@ -4,10 +4,14 @@ import { Observable } from 'rxjs';
 const service: string = 'spotify-hl';
 const user: string = 'spotify-user';
 
-export function saveTokenInKeychain(token: string): Observable<any> {
+export function saveDataInKeychain(
+  token: string,
+  userName = user,
+  serviceName = service,
+): Observable<any> {
   return new Observable((observer) => {
     keytar
-      .setPassword(service, user, token)
+      .setPassword(serviceName, userName, token)
       .then(() => {
         observer.complete();
       })
@@ -37,14 +41,16 @@ export function checkToken(): Observable<boolean> {
   });
 }
 
-export function getTokenInKeychain(): Observable<any> {
+export function getTokenInKeychain(userName = user, serviceName = service): Observable<any> {
   return new Observable((observer) => {
-    keytar.getPassword(service, user).then((pwd) => {
-      if (pwd) {
+    keytar
+      .getPassword(serviceName, userName)
+      .then((pwd) => {
         observer.next(pwd);
-      } else {
-        observer.error();
-      }
-    });
+        observer.complete();
+      })
+      .catch((err) => {
+        observer.error(err);
+      });
   });
 }
