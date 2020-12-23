@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 const RESPONSE_TYPE = 'code';
 const CLIENT_ID: string = '0b558d11e0a74244b2b58e9de1c3efb1';
 const PORT: number = 8085;
-const SHOW_DIALOG = true;
+const SHOW_DIALOG = false;
 const SCOPE: string = [
   'user-read-private',
   'user-read-email',
@@ -22,6 +22,7 @@ const REDIRECT_URI = `http://localhost:${PORT}/callback`;
 const URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}&&show_dialog=${SHOW_DIALOG}&redirect_uri=${REDIRECT_URI}`;
 
 const app = express();
+// const server = app.listen(PORT);
 
 export function authorizationRequest(): Observable<any> {
   return new Observable((observer) => {
@@ -56,8 +57,6 @@ export function authorizationRequest(): Observable<any> {
 }
 
 export async function refreshAccessTokenRequest(accessToken: string): Promise<void> {
-  console.log(accessToken);
-
   const body = {
     grant_type: 'authorization_code',
     code: accessToken,

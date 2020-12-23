@@ -27,7 +27,6 @@ export function checkToken(): Observable<boolean> {
       .getPassword(service, user)
       .then((token) => {
         if (token) {
-          console.log(token);
           observer.next(true);
           observer.complete();
         } else {

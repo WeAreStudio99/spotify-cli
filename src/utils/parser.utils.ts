@@ -1,6 +1,13 @@
-// import fs from 'fs-extra';
+import fs from 'fs';
+import { FileNameEnum } from '../models/file.model';
+import { ConfigPathEnum } from '../models/path.model';
 
-// export async function writeUserDataFile(data: any) {
-//   JSON.stringify(data);
-//   fs.writeFileSync('')
-// }
+export async function parseConfigFile(file: FileNameEnum) {
+  try {
+    const rawConfig = fs.readFileSync(`${ConfigPathEnum.PATH.slice(1)}/${file}`);
+    const config = JSON.parse(rawConfig.toString());
+    return config;
+  } catch (err) {
+    return false;
+  }
+}
