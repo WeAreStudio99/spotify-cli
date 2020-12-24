@@ -1,30 +1,15 @@
 import axios from 'axios';
-import cliProgress from 'cli-progress';
-import { URL, URLSearchParams } from 'url';
+import { URL } from 'url';
 import { bearer } from '../auth';
-import { FileNameEnum } from '../models/file.model';
+import { FileNameEnum } from '../models/files/file.model';
 import { IPaging } from '../models/spotify/paging.model';
 import { IRecommendations } from '../models/spotify/recommandation.model';
 import { writeDataFile } from '../templates/data/data.template';
 
-function generateloadingBar(dataType: string): cliProgress.SingleBar {
-  const loadingBar = new cliProgress.SingleBar(
-    {
-      format: `${dataType} | {bar} | {percentage}%`,
-    },
-    cliProgress.Presets.legacy,
-  );
-
-  return loadingBar;
-}
-
 export async function getUserInfo() {
-  generateloadingBar('User Profile').start(100, 0);
   bearer.initAuthToken$.subscribe({
     complete: () => {
-      const interval = setInterval(() => {
-        generateloadingBar('#Task 1 : USER_PROFILE').increment();
-      }, 100);
+      const interval = setInterval(() => {}, 100);
       axios
         .get<IPaging>('https://api.spotify.com/v1/me')
         .then((res) => {
@@ -81,9 +66,14 @@ export async function getUserRecommendations(recommendantionQueryObject: IRecomm
 
   bearer.initAuthToken$.subscribe({
     complete: () => {
-      axios.get(url.href).then((res) => {
-        console.log(res.data);
-      });
+      axios
+        .get(url.href)
+        .then((res) => {
+          writeDataFile(FileNameEnum.USER_RECOMMENDATIONS, res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   });
 }

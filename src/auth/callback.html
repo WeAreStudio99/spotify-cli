@@ -10,7 +10,7 @@
 
 <style>
 	body {
-		background: #1DB954;
+		background: #000;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -28,7 +28,7 @@
 
 	h1,
 	h2 {
-		color: #fff;
+		color: #1DB954;
 		font-family: sans-serif;
 	}
 </style>
@@ -42,7 +42,7 @@
 
 			fetch(`/token?${hash}`)
 				.then(() => {
-					document.querySelector('.title').innerHTML = 'Auth success';
+					document.querySelector('.title').innerHTML = 'You auth is a success, return to CLI';
 					setTimeout(() => {
 
 					}, 2000);

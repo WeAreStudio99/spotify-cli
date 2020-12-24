@@ -4,13 +4,15 @@
 
 import { authAction$ } from './action/auth.action';
 import { spotifyAction } from './action/spotify.action';
+import { welcomeQuestion } from './questions/welcome.question';
 
 // import { keychain } from './auth';
 
 export async function spotifyHl() {
   authAction$.subscribe({
     complete: () => {
-      spotifyAction();
+      welcomeQuestion();
+      //   spotifyAction();
     },
   });
 }

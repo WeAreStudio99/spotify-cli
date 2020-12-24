@@ -1,5 +1,5 @@
-import { FileNameEnum } from '../../models/file.model';
-import { ConfigPathEnum } from '../../models/path.model';
+import { FileNameEnum } from '../../models/files/file.model';
+import { ConfigPathEnum } from '../../models/files/path.model';
 import { defaultTemplate } from '../default/default.template';
 
 export async function writeDataFile(fileName: FileNameEnum, data: any): Promise<any> {

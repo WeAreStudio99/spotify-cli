@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { IExternalURL } from './external-URL.model';
-import { IFollowers } from './follower.model';
+import { IFollowers } from './followers.model';
 import { IImage } from './images.model';
 
 export interface IArtist {

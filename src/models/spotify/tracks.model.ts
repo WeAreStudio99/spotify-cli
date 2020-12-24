@@ -8,7 +8,7 @@ import { IExternalURL } from './external-URL.model';
 import { IRestriction } from './restriction.model';
 import { ITrackLink } from './track-link.model';
 
-export interface ITracks {
+export interface ITrack {
   album: IAlbum;
   artists: IArtist[];
   name: string;

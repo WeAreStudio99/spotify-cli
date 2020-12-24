@@ -1,9 +1,9 @@
 import { IArtist } from './artist.model';
-import { ITracks } from './tracks.model';
+import { ITrack } from './tracks.model';
 
 export interface IPaging {
   href: string;
-  items: IArtist[] | ITracks[];
+  items: IArtist[] | ITrack[];
   limit: number;
   previous: string;
   next: string;
