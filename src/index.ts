@@ -1,7 +1,7 @@
-import { spotifyHl } from './spotify-hl';
+import SpotifyHl from './spotify-hl';
 
 export default function index() {
-  return spotifyHl();
+  return new SpotifyHl();
 }
 
 index();

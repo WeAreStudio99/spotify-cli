@@ -11,9 +11,14 @@
     "build": "npm run clean:some && tsc -p . && cp ./src/auth/callback.html ./lib/auth/",
     "clean:some": "rm -rf ./lib ./docs",
     "global": "npm i -g && spotify-hl",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "typedoc --out docs ./src"
   },
-  "author": "",
+  "author": {
+    "name": "Thibault Walterspieler",
+    "url": "https://github.com/ThibaultWalterspieler",
+    "email": "thibault@walterspieler.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/cli-progress": "^3.8.0",
@@ -43,6 +48,7 @@
     "keytar": "^7.2.0",
     "open": "^7.3.0",
     "rxjs": "^6.6.3",
-    "terminal-kit": "^1.44.0"
+    "terminal-kit": "^1.44.0",
+    "typedoc": "^0.19.2"
   }
 }

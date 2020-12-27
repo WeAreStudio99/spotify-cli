@@ -55,8 +55,18 @@
 // };
 
 import figlet from 'figlet';
+import { terminal } from 'terminal-kit';
+import { environment } from '../environments/environment';
+import { termConfig } from '../templates/term';
 
 export const showTitleAndBanner = (): void => {
   //   console.log(figlet.textSync('Spotify API x 99stud', { horizontalLayout: 'full', font: 'Santa Clara' }));
   console.log('Spotify Higlight');
 };
+
+export class Logger {
+  showChat = async (username: string, message: string) => {
+    terminal.green(`[${username}] > `);
+    await terminal.slowTyping(`${message}\n\n`, termConfig.slowTypingConfig);
+  };
+}
