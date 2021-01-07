@@ -80,20 +80,21 @@ export default class SpotifyAction {
     const logger = new Logger();
     const spotifyApi = new SpotifyApi();
 
-    logger.showChat(environment.botName, 'Wait 2sec, I m getting ur data').then(() => {
+    logger.showChat(environment.botName, 'Wait 2sec, I"m sending to u a lil program').then(() => {
       spotifyApi
         .getUserTopSpotify('artists', { time_range: 'medium_term', limit: 5 })
         .then(async () => {
-          await logger.showChat(environment.botName, 'Ok, let see...').then(async () => {
-            const topArtists: IArtist[] = await parseConfigFile(FileNameEnum.USER_TOP_ARTISTS);
-            logger
-              .showChat(environment.botName, `I think you're a big fan of ${topArtists[0].name}`)
-              .then(() => {
-                terminal.drawImage(topArtists[0].images[0].url, {
-                  shrink: { width: terminal.width, height: terminal.height / 1.2 },
-                });
-              })
-              .then(() => {});
+          await logger.showChat(environment.botName, "Ok, let's see...").then(async () => {
+            logger.showFakeLoader();
+            // const topArtists: IArtist[] = await parseConfigFile(FileNameEnum.USER_TOP_ARTISTS);
+            // logger
+            //   .showChat(environment.botName, `I think you're a big fan of ${topArtists[0].name}`)
+            //   .then(() => {
+            //     terminal.drawImage(topArtists[0].images[0].url, {
+            //       shrink: { width: terminal.width, height: terminal.height / 1.7 },
+            //     });
+            //   })
+            //   .then(() => {});
           });
         });
     });
