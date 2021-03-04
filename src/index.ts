@@ -1,7 +1,1 @@
-import SpotifyHl from './spotify-hl';
-
-export default function index() {
-  return new SpotifyHl();
-}
-
-index();
+export { run } from '@oclif/command';

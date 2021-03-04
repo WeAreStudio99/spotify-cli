@@ -1,3 +1,21 @@
+*-debug.log
+*-error.log
+/.nyc_output
+/dist
+/tmp
+/yarn.lock
+
+# Env 
+/src/environments
+
+# IDE - VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
 # compiled output
 /lib
 # dependencies
@@ -12,20 +30,6 @@
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
-.vscode/
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
-
 # System Files
 .DS_Store
 Thumbs.db
-
-# Env
-/src/environments/*
-
-# User files
-/.config/*

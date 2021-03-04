@@ -1,55 +1,72 @@
 {
   "name": "spotify-highlights",
+  "description": "Discover your Spotify universe in your terminal with the strange Ek",
   "version": "0.1.0-beta",
-  "description": "",
-  "main": "./lib/index.js",
+  "author": "Thibault Walterspieler",
   "bin": {
-    "spotify-hl": "bin/spotify-cli"
+    "spotify-hl": "./bin/run"
   },
-  "scripts": {
-    "start": "npm run build && npm run global",
-    "build": "npm run clean:some && tsc -p . && cp ./src/auth/callback.html ./lib/auth/",
-    "clean:some": "rm -rf ./lib ./docs",
-    "global": "npm i -g && spotify-hl",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "typedoc --out docs ./src"
-  },
-  "author": {
-    "name": "Thibault Walterspieler",
-    "url": "https://github.com/ThibaultWalterspieler",
-    "email": "thibault@walterspieler.com"
-  },
-  "license": "ISC",
-  "devDependencies": {
-    "@types/cli-progress": "^3.8.0",
-    "@types/terminal-kit": "^1.28.2",
-    "@typescript-eslint/eslint-plugin": "^4.10.0",
-    "@typescript-eslint/parser": "^4.10.0",
-    "eslint": "^7.15.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "ts-loader": "^8.0.12",
-    "typescript": "^4.1.3",
-    "webpack": "^5.11.0",
-    "webpack-cli": "^4.2.0"
-  },
+  "bugs": "https://github.com/WeAreStudio99/spotify-cli/issues",
   "dependencies": {
-    "@types/express": "^4.17.9",
-    "@types/figlet": "^1.2.1",
-    "@types/fs-extra": "^9.0.5",
-    "@types/node": "^14.14.13",
-    "axios": "^0.21.0",
-    "chalk": "^4.1.0",
-    "cli-progress": "^3.8.2",
-    "clipboardy": "^2.3.0",
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/plugin-help": "^3.2.2",
+    "axios": "^0.21.1",
     "express": "^4.17.1",
-    "figlet": "^1.5.0",
-    "fs-extra": "^9.0.1",
-    "get-pixels": "^3.3.2",
-    "keytar": "^7.2.0",
-    "open": "^7.3.0",
-    "rxjs": "^6.6.3",
-    "terminal-kit": "^1.44.0",
-    "typedoc": "^0.19.2"
-  }
+    "keytar": "^7.3.0",
+    "open": "^7.4.1",
+    "tslib": "^1.14.1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
+    "@oclif/test": "^1.2.8",
+    "@types/chai": "^4.2.14",
+    "@types/express": "^4.17.11",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.17.51",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "chai": "^4.3.0",
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "globby": "^10.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "prettier": "^2.2.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/WeAreStudio99/spotify-cli",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "spotify-hl",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "WeAreStudio99/spotify-cli",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
 }
